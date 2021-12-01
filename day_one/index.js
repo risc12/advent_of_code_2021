@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const fileToRead = process.argv[2] || 'input.txt';
+const fileToRead = process.argv[2] || './input.txt';
 
 const inputArray = fs.readFileSync(fileToRead).toString().split("\n").map(el => parseInt(el));
 
@@ -8,7 +8,7 @@ function getAmountOfIncreasedElements(array) {
   let amountOfIncreases = 0;
 
   array.forEach((element, index, array) => {
-    if(index === 0)  return false;
+    if(index === 0)  return;
 
     const prev = array[index - 1];
 
