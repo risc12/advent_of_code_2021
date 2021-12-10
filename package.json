@@ -1,0 +1,11 @@
+{
+  "name": "advent_of_code_2021",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:risc12/advent_of_code_2021.git",
+  "author": "Remco Peggeman <remcopeg@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
