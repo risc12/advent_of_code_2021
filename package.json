@@ -6,6 +6,7 @@
   "author": "Remco Peggeman <remcopeg@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "asciichart": "^1.5.25",
     "colors": "^1.4.0"
   }
 }
