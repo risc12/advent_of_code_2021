@@ -1,11 +1,14 @@
 const fs = require('fs');
 const util = require('util');
+
 util.inspect.defaultOptions.maxArrayLength = null;
 util.inspect.defaultOptions.breakLength = Infinity;
 
 const fileToRead = process.argv[2] || './input.txt';
 
-const inputArray = fs.readFileSync(fileToRead).toString().split(",").filter(e => e).map(e => Number(e));
+const inputArray = [7];// fs.readFileSync(fileToRead).toString().split(",").filter(e => e).map(e => Number(e));
+
+
 
 function solve(amount) {
   const createGeneration = prev => prev.flatMap(f => f === 0 ? [6, 8] : [f - 1]);
@@ -45,12 +48,44 @@ function efficientSolve(amount) {
   return inputArray.map(e => fish(amount + (6 -e))).reduce((acc, e) => acc + e, inputArray.length)
 }
 
-function partOne() {
-  return [
-    solve(80),
-    efficientSolve(80)
-  ]
 
+function f(t) {
+  return t<=0
+    ? 1
+    : f(t-7)+f(t-9)
+}
+
+function d(t) {
+  return (Math.pow(2, t/7) - Math.pow(2, t/9)) 
+}
+
+/*
+
+f(70) = f(70-7) + f(70-9)
+
+
+
+
+ */
+
+function partOne() {
+  // return [
+  //   solve(80),
+  //   efficientSolve(80)
+  // ]
+
+  let sol = [];
+
+  for(let t=0; t < 101; t++) {
+    let out = efficientSolve(t);
+    let direct = d(t);
+    let delta = out - direct;
+
+    sol.push({ out, direct, delta  });
+
+  }
+
+  console.table(sol);
 }
 
 function partTwo() {
